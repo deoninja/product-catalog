@@ -15,7 +15,7 @@ import ImageCarousel from './ImageCarousel';
 const ProductDetailsModal = ({ open, onClose, product }) => {
   if (!product) return null;
 
-  const allImages = [product.thumbnail, ...(product.images || [])];
+  const allImages = [product.thumbnail, ...(product.images || [])].slice(0, 4);
 
   return (
     <Dialog

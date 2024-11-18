@@ -64,7 +64,7 @@ const ProductCard = ({
         onClick={onClick}
       >
         <img
-          src={product.thumbnail}
+          src={product.images && product.images.length > 2 ? product.images[2] : product.thumbnail}
           alt={product.title}
           style={{
             position: 'absolute',

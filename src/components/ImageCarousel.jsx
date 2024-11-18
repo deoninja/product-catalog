@@ -3,7 +3,7 @@ import { Box, IconButton } from '@mui/material';
 import { ChevronLeft, ChevronRight } from '@mui/icons-material';
 
 const ImageCarousel = ({ images, title }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(images && images.length > 2 ? 2 : 0);
 
   const handlePrevious = () => {
     setCurrentIndex((prevIndex) => 
