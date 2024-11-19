@@ -1,23 +1,27 @@
 import React, { useState } from 'react';
-import { Box, IconButton } from '@mui/material';
+import { Box, IconButton, CircularProgress } from '@mui/material';
 import { ChevronLeft, ChevronRight } from '@mui/icons-material';
 
 const ImageCarousel = ({ images, title }) => {
   const [currentIndex, setCurrentIndex] = useState(images && images.length > 2 ? 2 : 0);
+  const [imageLoading, setImageLoading] = useState(true);
 
   const handlePrevious = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
+    setCurrentIndex((prevIndex) => {
+      setImageLoading(true);
+      return prevIndex === 0 ? images.length - 1 : prevIndex - 1;
+    });
   };
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
-    );
+    setCurrentIndex((prevIndex) => {
+      setImageLoading(true);
+      return prevIndex === images.length - 1 ? 0 : prevIndex + 1;
+    });
   };
 
   const handleThumbnailClick = (index) => {
+    setImageLoading(true);
     setCurrentIndex(index);
   };
 
@@ -34,17 +38,32 @@ const ImageCarousel = ({ images, title }) => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          mb: 2
+          mb: 2,
+          bgcolor: 'background.default',
         }}
       >
+        {imageLoading && (
+          <CircularProgress
+            sx={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              zIndex: 1,
+            }}
+          />
+        )}
         <img
           src={images[currentIndex]}
           alt={`${title} - ${currentIndex + 1}`}
+          onLoad={() => setImageLoading(false)}
           style={{
             width: '100%',
             height: '100%',
             objectFit: 'contain',
-            borderRadius: '8px'
+            borderRadius: '8px',
+            opacity: imageLoading ? 0 : 1,
+            transition: 'opacity 0.3s ease-in-out',
           }}
         />
         

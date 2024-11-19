@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Typography,
@@ -9,6 +9,7 @@ import {
   Button,
   Tooltip,
   Zoom,
+  CircularProgress,
 } from '@mui/material';
 import {
   LocalOffer,
@@ -27,6 +28,7 @@ const ProductCard = ({
   viewMode = 'grid'
 }) => {
   const isListView = viewMode === 'list';
+  const [imageLoading, setImageLoading] = useState(true);
 
   return (
     <Paper
@@ -60,12 +62,28 @@ const ProductCard = ({
           borderRadius: 1,
           overflow: 'hidden',
           mb: isListView ? 0 : 2,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          bgcolor: 'background.default',
         }}
         onClick={onClick}
       >
+        {imageLoading && (
+          <CircularProgress
+            sx={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              zIndex: 1,
+            }}
+          />
+        )}
         <img
           src={product.images && product.images.length > 2 ? product.images[2] : product.thumbnail}
           alt={product.title}
+          onLoad={() => setImageLoading(false)}
           style={{
             position: 'absolute',
             top: 0,
@@ -73,6 +91,8 @@ const ProductCard = ({
             width: '100%',
             height: '100%',
             objectFit: 'cover',
+            opacity: imageLoading ? 0 : 1,
+            transition: 'opacity 0.3s ease-in-out',
           }}
         />
         
