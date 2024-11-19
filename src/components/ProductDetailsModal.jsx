@@ -17,6 +17,14 @@ const ProductDetailsModal = ({ open, onClose, product }) => {
 
   const allImages = [product.thumbnail, ...(product.images || [])].slice(0, 4);
 
+   // Helper function to format price
+ const formatPrice = (price) => {
+  return price.toLocaleString('en-US', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+};
+
   return (
     <Dialog
       open={open}
@@ -41,7 +49,7 @@ const ProductDetailsModal = ({ open, onClose, product }) => {
           <ImageCarousel images={allImages} title={product.title} />
 
           <Typography variant="h6" color="primary" gutterBottom>
-            ₱ {product.price.toFixed(2)}
+            ₱ {formatPrice(product.price)}
           </Typography>
 
           <Box sx={{ my: 2 }}>
