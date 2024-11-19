@@ -53,6 +53,18 @@ The application is fully responsive and provides an optimized experience for:
 - Tablets
 - Desktop computers
 
+## 🔗 Links
+
+- GitHub Repository: [https://github.com/deoninja/product-catalog](https://github.com/deoninja/product-catalog)
+- Local Development: [http://localhost:5173/](http://localhost:5173/) - Main application page
+
+## 🖼️ Image Display Features
+
+- Maximum of 4 images per product
+- Third image set as default main image in product detail view
+- Third image used as thumbnail in product grid
+- Fallback to default thumbnail if product has fewer than 3 images
+
 ## 🔧 Development Tools
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) - Uses Babel for Fast Refresh
