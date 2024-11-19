@@ -104,6 +104,8 @@ const ProductShowcase = () => {
     }
   }, [products, selectedCategory, priceRange, sortBy]);
 
+
+
   // Event handlers
   const handleTabChange = (event, newValue) => {
     setCurrentTab(newValue);

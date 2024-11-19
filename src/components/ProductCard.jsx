@@ -30,6 +30,14 @@ const ProductCard = ({
   const isListView = viewMode === 'list';
   const [imageLoading, setImageLoading] = useState(true);
 
+ // Helper function to format price
+ const formatPrice = (price) => {
+  return price.toLocaleString('en-US', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+};
+
   return (
     <Paper
       elevation={2}
@@ -203,7 +211,7 @@ const ProductCard = ({
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
           <Box>
             <Typography variant="h6" color="primary" sx={{ fontWeight: 'bold', lineHeight: 1 }}>
-              ₱{product.price.toFixed(2)}
+              ₱{formatPrice(product.price)}
             </Typography>
             {product.discountPercentage > 0 && (
               <Typography
@@ -211,7 +219,7 @@ const ProductCard = ({
                 color="text.secondary"
                 sx={{ textDecoration: 'line-through' }}
               >
-                ₱{(product.price / (1 - product.discountPercentage / 100)).toFixed(2)}
+                ₱{formatPrice(product.price / (1 - product.discountPercentage / 100))}
               </Typography>
             )}
           </Box>
