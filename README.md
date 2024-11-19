@@ -57,6 +57,7 @@ The application is fully responsive and provides an optimized experience for:
 
 - GitHub Repository: [https://github.com/deoninja/product-catalog](https://github.com/deoninja/product-catalog)
 - Local Development: [http://localhost:5173/](http://localhost:5173/) - Main application page
+- Innovation Page: [http://localhost:5173/](http://localhost:5173/product-showcase) - Showcase innovation
 
 ## 🖼️ Image Display Features
 
